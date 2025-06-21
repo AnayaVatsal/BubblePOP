@@ -67,7 +67,7 @@ while run:
 
     if play_button.draw():  # open the file with the game code
         loading_screen()
-        with open('Main_Game_Code.py', 'r') as code_file:
+        with open('Game Code.py', 'r') as code_file:
             game = code_file.read()
             exec(game)
 
