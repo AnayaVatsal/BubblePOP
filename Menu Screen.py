@@ -1,4 +1,5 @@
 import pygame
+import time
 
 # initializing pygame window
 pygame.init()
@@ -8,6 +9,11 @@ pygame.display.set_caption("Game Menu")
 # images for button
 play_img = pygame.image.load('play.png').convert_alpha()
 quit_img = pygame.image.load('quit.png').convert_alpha()
+
+# image for loading screen
+loading_img = pygame.image.load('load.png').convert_alpha()
+loading_img = pygame.transform.scale(loading_img, (600,600))
+
 
 
 class Button:  # button class to design buttons
@@ -39,6 +45,20 @@ class Button:  # button class to design buttons
 play_button = Button(129, 20, play_img, 0.5)
 quit_button = Button(129, 250, quit_img, 0.5)
 
+font = pygame.font.SysFont('ariel',40)
+
+# loading screen
+def loading_screen():
+    window.fill((0,0,0))
+
+    img_rect = loading_img.get_rect(center=(400,200))
+    window.blit(loading_img, img_rect)
+
+    loading_text= font.render("Loading...", True, (255,255,255))
+    window.blit(loading_text, (340,370))
+    pygame.display.update()
+    time.sleep(1.5)
+
 
 # game loop
 run = True
@@ -46,9 +66,10 @@ while run:
     window.fill((240, 200, 250))
 
     if play_button.draw():  # open the file with the game code
-        code_file = open('Game Code.py', 'r')
-        game = code_file.read()
-        exec(game)
+        loading_screen()
+        with open('Main_Game_Code.py', 'r') as code_file:
+            game = code_file.read()
+            exec(game)
 
     if quit_button.draw():  # quit game condition
         run = False
