@@ -10,3 +10,5 @@ MediaPipe: A framework by Google that provides the hand-tracking model, which id
 Pygame: A library used for creating and managing the game window and handling user interface elements.
 
 Challenge Yourself: How fast can you pop? Test your reflexes and see if you can keep up with the ever-increasing bubble frenzy!
+
+Video Link - https://youtu.be/1mlm7Gx3hMg
